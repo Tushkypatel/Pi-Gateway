@@ -1,0 +1,104 @@
+<!-- <ion-app>
+    <ion-menu side="start" content-id="main-content1"> -->
+
+      <ion-header>
+          <ion-toolbar color="primary">
+          <ion-title>Analog Control</ion-title>
+
+          <ion-buttons slot="start">
+
+          <ion-button (click)="gotohome()">
+          <ion-icon slot="icon-only" name="chevron-back-circle"></ion-icon>
+          </ion-button>
+
+          </ion-buttons>
+
+          </ion-toolbar>
+      </ion-header>
+
+       <!--  <ion-content>
+          <ion-list>
+            <ion-menu-toggle auto-hide="true">
+            <ion-item>
+              <ion-icon name="paper-plane" slot="start" (click)="gotohome()"></ion-icon>
+              <ion-label (click)="gotohome()">Monitor</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="heart" slot="start" (click)="gotocontrol()"></ion-icon>
+              <ion-label (click)="gotocontrol()">Control</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="archive" slot="start" (click)="gotoreport()"></ion-icon>
+              <ion-label (click)="gotoreport()">Report</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="settings" slot="start" (click)="gotosetting()"></ion-icon>
+              <ion-label (click)="gotosetting()">Setting</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="power" slot="start" (click)="logout()"></ion-icon>
+              <ion-label (click)="logout()">Logout</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          </ion-list>
+        </ion-content>
+     
+    </ion-menu> 
+
+
+    <div class="ion-page" id="main-content1">
+      <ion-header>
+        <ion-toolbar color="primary">
+
+
+          <ion-buttons slot="start">
+            <ion-menu-button autoHide="false"></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Control</ion-title>
+        </ion-toolbar>
+      </ion-header> -->
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div> 
+      <ion-list-header>
+        <ion-label><h2>Control Value</h2></ion-label>
+      </ion-list-header>
+
+      <ion-list ngDefaultControl *ngFor="let control of controls;let i=index">
+        <ion-item>
+          <ion-label>{{ control.detail }}</ion-label>
+          <ion-input slot="end" color="primary" [(ngModel)]="control.value" (click)="test(i)"></ion-input>
+          <!-- <ion-note slot="end" color="primary">{{ control.value }}</ion-note> -->
+        </ion-item>
+      </ion-list>
+  </div>
+
+</ion-content>
+<!-- </div>
+
+ </ion-app> -->
+
+
+<!-- <ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="Controlls" (click)="gotocontrol()">
+      <ion-icon name="game-controller"></ion-icon>
+      <ion-label>Control</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="Reports">
+      <ion-icon name="reader"></ion-icon>
+      <ion-label>Reports</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="Settings" (click)="gotosetting()">
+      <ion-icon name="settings"></ion-icon>
+      <ion-label>Setting</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="Logout" (click)="logout()">
+      <ion-icon name="lock-closed"></ion-icon>
+      <ion-label>Logout</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs> -->

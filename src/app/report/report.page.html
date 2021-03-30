@@ -1,0 +1,53 @@
+      <ion-header>
+          <ion-toolbar color="primary">
+          <ion-title>Report</ion-title>
+
+          <ion-buttons slot="start">
+
+          <ion-button (click)="gotohome()">
+          <ion-icon slot="icon-only" name="chevron-back-circle"></ion-icon>
+          </ion-button>
+
+          </ion-buttons>
+
+          </ion-toolbar>
+      </ion-header>
+
+
+    <ion-content fullscreen>
+        <ion-list-header>
+            <ion-label><h2>From Date</h2></ion-label>
+        </ion-list-header>
+
+      <ion-list>
+        <ion-item>
+          <ion-label>Start Date</ion-label>
+          <ion-datetime value="1990-02-19" placeholder="Select Date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>Start Time</ion-label>
+          <ion-datetime display-format="HH:mm" picker-format="HH:mm" value="1990-02-19T07:43Z"></ion-datetime>
+        </ion-item>
+      </ion-list>
+
+        <br><br>
+        <ion-list-header>
+            <ion-label><h2>To Date</h2></ion-label>
+        </ion-list-header>
+
+      <ion-list>
+        <ion-item>
+          <ion-label>Start Date</ion-label>
+          <ion-datetime value="1990-02-19" placeholder="Select Date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>Start Time</ion-label>
+          <ion-datetime display-format="HH:mm" picker-format="HH:mm" value="1990-02-19T07:43Z"></ion-datetime>
+        </ion-item>
+      </ion-list>
+
+
+    <ion-button class="ion-padding" expand="block" color="primary">
+      <ion-icon class="ion-padding" name="reader"></ion-icon>Excel
+    </ion-button>
+  </ion-content>

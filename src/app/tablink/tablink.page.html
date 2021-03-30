@@ -1,0 +1,32 @@
+
+      <ion-header>
+          <ion-toolbar color="primary">
+          <ion-title>Digital Monitor</ion-title>
+
+          <ion-buttons slot="start">
+
+          <ion-button (click)="gotohome()">
+          <ion-icon slot="icon-only" name="chevron-back-circle"></ion-icon>
+          </ion-button>
+
+          </ion-buttons>
+
+          </ion-toolbar>
+      </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div> 
+      <ion-list-header>
+        <ion-label><h2>Control Value</h2></ion-label>
+      </ion-list-header>
+
+      <ion-list ngDefaultControl *ngFor="let control of controls;let i=index">
+        <ion-item>
+          <ion-label>{{ control.detail }}</ion-label>
+          <!-- <ion-toggle slot="end" color="primary" [(ngModel)]="control.value" [checked]="control.value" (ngModelChange)="isEditAllow && test(i)"></ion-toggle> -->
+          <ion-img class="image" src="./assets/{{ control.value }}.png"></ion-img>
+          <!-- <ion-note slot="end" color="primary">{{ control.value }}</ion-note> -->
+        </ion-item>
+      </ion-list>
+  </div>
+
+</ion-content>
