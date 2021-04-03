@@ -1,48 +1,40 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Register</ion-title>
-  </ion-toolbar>
+	<ion-toolbar color="primary">
+		<ion-title>Register</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-
-
 	<ion-list>
-
-			<ion-item>
+		<ion-item>
 			<ion-label position="floating">Full name</ion-label>
 			<ion-input type="text" [(ngModel)]="full_name"></ion-input>
-			</ion-item>
-			<ion-item>
+		</ion-item>
+		<ion-item>
 			<ion-label position="floating">Phone number</ion-label>
 			<ion-input type="text" [(ngModel)]="phone_number"></ion-input>
-			</ion-item>
-			<ion-item>
+		</ion-item>
+		<ion-item>
 			<ion-label position="floating">Username</ion-label>
 			<ion-input type="text" [(ngModel)]="username"></ion-input>
-			</ion-item>
-			<ion-item>
+		</ion-item>
+		<ion-item>
 			<ion-label position="floating">Password</ion-label>
 			<ion-input type="password" [(ngModel)]="password"></ion-input>
-			</ion-item>
-			<ion-item>
+		</ion-item>
+		<ion-item>
 			<ion-label position="floating">Confirm Password</ion-label>
 			<ion-input type="password" [(ngModel)]="confirm_password"></ion-input>
-			</ion-item>
-
+		</ion-item>
 	</ion-list>
-
 	<div>
-
 		<br>
 		<ion-button class="ion-padding" expand="block" color="primary" (click)="adduser()">
-		<ion-icon class="ion-padding" name="checkmark-circle"></ion-icon>Submit
-	</ion-button>
+			<ion-icon class="ion-padding" name="checkmark-circle"></ion-icon>Submit
+		</ion-button>
 		<br>
 		<ion-button class="ion-padding" expand="block" color="primary" (click)="gotologin()">
-		<ion-icon class="ion-padding"  name="arrow-undo"></ion-icon>Login
-	</ion-button>
-		
+			<ion-icon class="ion-padding" name="arrow-undo"></ion-icon>Login
+		</ion-button>
 	</div>
-
 </ion-content>

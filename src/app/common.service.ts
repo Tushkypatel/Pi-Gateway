@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { ToastController, LoadingController, AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
+import { PostProvider } from 'src/providers/post-provider';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,10 @@ export class CommonService {
   constructor(
     private toastCtrl: ToastController,
     private loadingController: LoadingController,
-    private storage: Storage
+    private storage: Storage,
+    private alertController: AlertController,
+    private router: Router,
+    private postProvider: PostProvider
   ) { }
 
   async showToast(message) {
@@ -40,7 +45,35 @@ export class CommonService {
     return a;
   }
 
-  logout() {
-    this.storage.clear();
+  async logout() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Do you really want to logout ?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+          }
+        }, {
+          text: 'yes',
+          handler: () => {
+            this.storage.clear();
+            this.router.navigate(['/login']);
+            this.showToast('Logout Successful');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async load(callback) {
+    const body = await this.userData();
+    body.aski = 'profile';
+    this.postProvider.postData(body, 'file_aski.php').subscribe((data) => {
+      callback(data.profiles);
+    });
   }
 }

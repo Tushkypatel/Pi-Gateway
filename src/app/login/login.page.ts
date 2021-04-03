@@ -44,12 +44,11 @@ export class LoginPage implements OnInit {
       };
       this.postProvider.postData(body, 'file_aski.php')
         .subscribe((data) => {
-          console.log(data);
           if (data.success) {
             this.cs.hideLoader();
             this.storage.set('session_storage', data.result);
             this.router.navigate(['/home']);
-            this.cs.showToast('Login Successfull');
+            this.cs.showToast('Login Successful');
             this.username = '';
             this.password = '';
           } else {
