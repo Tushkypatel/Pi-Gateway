@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { PostProvider } from 'src/providers/post-provider';
 import { CommonService } from './common.service';
+import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -19,19 +20,27 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private postProvider: PostProvider,
-    private cs: CommonService
+    private cs: CommonService,
+    private storage: Storage,
+    private router: Router
   ) {
     this.initializeApp();
   }
 
   async initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.styleLightContent();
       this.splashScreen.hide();
     });
-
     this.userdata = await this.cs.userData();
+
+    this.storage.get('session_storage').then((res) => {
+      if (res == null) {
+        this.router.navigate(['/login']);
+      } else {
+        this.router.navigate(['/home']);
+      }
+    });
   }
 
   ngOnInit() {

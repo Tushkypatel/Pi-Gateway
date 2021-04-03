@@ -4,10 +4,6 @@ import { PostProvider } from '../../providers/post-provider';
 import { Storage } from '@ionic/storage';
 import { CommonService } from '../common.service';
 import { AlertController } from '@ionic/angular';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
-import { File } from '@ionic-native/file/ngx';
-import { FileOpener } from '@ionic-native/file-opener/ngx';
-
 
 @Component({
   selector: 'app-login',
@@ -25,10 +21,7 @@ export class LoginPage implements OnInit {
     private postProvider: PostProvider,
     private storage: Storage,
     private cs: CommonService,
-    public alertCont: AlertController,
-    private transfer: FileTransfer,
-    private file: File,
-    private fileOpener: FileOpener
+    public alertCont: AlertController
   ) {}
 
   ngOnInit() {
@@ -71,21 +64,5 @@ export class LoginPage implements OnInit {
   closeapp() {
     // tslint:disable-next-line: no-string-literal
     navigator['app'].exitApp();
-  }
-
-  downloadExcel() {
-    const url = 'http://www.africau.edu/images/default/sample.pdf';
-    const fileTransfer: FileTransferObject = this.transfer.create();
-    fileTransfer.download(url, this.file.dataDirectory + 'file.pdf').then((entry) => {
-      alert('download complete: ' + entry.toURL());
-
-      this.fileOpener.open(entry.toURL(), 'application/pdf')
-      .then(() => console.log('File is opened'))
-      .catch(e => console.log('Error opening file', e));
-
-    }, (error) => {
-      // handle error
-      alert(JSON.stringify(error));
-    });
   }
 }
