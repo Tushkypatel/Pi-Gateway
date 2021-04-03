@@ -1,22 +1,15 @@
 <!-- <ion-app>
     <ion-menu side="start" content-id="main-content1"> -->
 
-      <ion-header>
-          <ion-toolbar color="primary">
-          <ion-title>Analog Control</ion-title>
-
-          <ion-buttons slot="start">
-
-          <ion-button (click)="gotohome()">
-          <ion-icon slot="icon-only" name="chevron-back-circle"></ion-icon>
-          </ion-button>
-
-          </ion-buttons>
-
-          </ion-toolbar>
-      </ion-header>
-
-       <!--  <ion-content>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Analog Control</ion-title>
+  </ion-toolbar>
+</ion-header>
+<!--  <ion-content>
           <ion-list>
             <ion-menu-toggle auto-hide="true">
             <ion-item>
@@ -59,18 +52,20 @@
       </ion-header> -->
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div> 
-      <ion-list-header>
-        <ion-label><h2>Control Value</h2></ion-label>
-      </ion-list-header>
+  <div>
+    <ion-list-header>
+      <ion-label>
+        <h2>Control Value</h2>
+      </ion-label>
+    </ion-list-header>
 
-      <ion-list ngDefaultControl *ngFor="let control of controls;let i=index">
-        <ion-item>
-          <ion-label>{{ control.detail }}</ion-label>
-          <ion-input slot="end" color="primary" [(ngModel)]="control.value" (click)="test(i)"></ion-input>
-          <!-- <ion-note slot="end" color="primary">{{ control.value }}</ion-note> -->
-        </ion-item>
-      </ion-list>
+    <ion-list ngDefaultControl *ngFor="let control of controls;let i=index">
+      <ion-item>
+        <ion-label>{{ control.detail }}</ion-label>
+        <ion-input slot="end" color="primary" [(ngModel)]="control.value" (click)="test(i)"></ion-input>
+        <!-- <ion-note slot="end" color="primary">{{ control.value }}</ion-note> -->
+      </ion-item>
+    </ion-list>
   </div>
 
 </ion-content>

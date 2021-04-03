@@ -1,99 +1,28 @@
-<ion-app>
-    <ion-menu side="start" content-id="main-content">
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Analog Monitor</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div>
+    <ion-list-header>
+      <ion-label>
+        <h2>Live Value</h2>
+      </ion-label>
+    </ion-list-header>
 
-      <ion-header>
-          <ion-toolbar color="primary">
-          <ion-title>Welcome {{members.full_name}}</ion-title>
-
-          <!-- <ion-buttons slot="end">
-
-          <ion-button (click)="logout()">
-          <ion-icon slot="icon-only" name="power"></ion-icon>
-          </ion-button>
-
-          </ion-buttons>   -->
-
-          </ion-toolbar>
-      </ion-header>
-
-        <ion-content>
-          <ion-list>
-            <ion-menu-toggle auto-hide="true">
-            <ion-item>
-              <ion-icon name="eye" slot="start" (click)="gotohome()"></ion-icon>
-              <ion-label (click)="gotohome()">Analog Monitor</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-icon name="eye" slot="start" (click)="gototablink()"></ion-icon>
-              <ion-label (click)="gototablink()">Digital Monitor</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-icon name="game-controller" slot="start" (click)="gotocontrol()"></ion-icon>
-              <ion-label (click)="gotocontrol()">Analog Control</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-icon name="game-controller" slot="start" (click)="gotomain()"></ion-icon>
-              <ion-label (click)="gotomain()">Digital Control</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-icon name="document-text" slot="start" (click)="gotoreport()"></ion-icon>
-              <ion-label (click)="gotoreport()">Report</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-icon name="settings" slot="start" (click)="gotosetting()"></ion-icon>
-              <ion-label (click)="gotosetting()">Setting</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-icon name="power" slot="start" (click)="logout()"></ion-icon>
-              <ion-label (click)="logout()">Logout</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-          </ion-list>
-        </ion-content>
-     
-    </ion-menu>
-
-    <script>
-  async function openMenu() {
-    await menuController.open();
-  }
-</script>
-
-
-
-    <div class="ion-page" id="main-content">
-      <ion-header>
-        <ion-toolbar color="primary">
-
-
-          <ion-buttons slot="start">
-            <ion-menu-button (click)="load()"></ion-menu-button>
-          </ion-buttons>
-          <ion-title>Analog Monitor</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding">
-          <div> 
-      <ion-list-header>
-        <ion-label><h2>Live Value</h2></ion-label>
-      </ion-list-header>
-
-      <ion-list *ngFor="let monitor of monitors">
-        <ion-item>
-          <ion-label>{{ monitor.detail }}</ion-label>
-          <ion-note slot="end" color="primary">{{ monitor.value }}   {{ monitor.unit }}</ion-note>
-        </ion-item>
-      </ion-list>
+    <ion-list *ngFor="let monitor of monitors">
+      <ion-item>
+        <ion-label>{{ monitor.detail }}</ion-label>
+        <ion-note slot="end" color="primary">{{ monitor.value }} {{ monitor.unit }}</ion-note>
+      </ion-item>
+    </ion-list>
   </div>
 
-       </ion-content>
-    </div>
- 
-</ion-app>
-
-
-
-
+</ion-content>
 
 <!-- <ion-tabs>
   <ion-tab-bar slot="bottom">

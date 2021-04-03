@@ -2,44 +2,46 @@
   <ion-toolbar color="primary">
     <ion-title>Login</ion-title>
 
-            
-            <ion-buttons slot="end">
 
-              <ion-button slot="end" (click)="closeapp()">
-              <ion-icon slot="icon-only" name="power"></ion-icon>
-              </ion-button>
+    <ion-buttons slot="end">
 
-            </ion-buttons>
-      
-   </ion-toolbar>
+      <ion-button slot="end" (click)="closeapp()">
+        <ion-icon slot="icon-only" name="power"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-<br>
-<br>
-<br>
-	<ion-list>
-		<ion-item>
-          <ion-label position="floating">Username</ion-label>
-          <ion-input type="text" [(ngModel)]="username"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" [(ngModel)]="password"></ion-input>
-        </ion-item>
+  <br>
+  <br>
+  <br>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
 
-	</ion-list>
-	<div>
+  </ion-list>
+  <div>
     <br>
-		<ion-button class="ion-padding" expand="block" color="primary" (click)="login()">
+    <ion-button class="ion-padding" expand="block" color="primary" (click)="login()">
       <ion-icon class="ion-padding" name="lock-open"></ion-icon>Login
     </ion-button>
-		<br>
-		<ion-button class="ion-padding" expand="block" color="primary" (click)="gotoregister()">
+    <br>
+    <ion-button class="ion-padding" expand="block" color="primary" (click)="gotoregister()">
       <ion-icon class="ion-padding" name="person-add"></ion-icon>Register
     </ion-button>
-		<br>
+    <br>
 
-    </div>
+  </div>
+
+  <ion-button (click)="downloadExcel()">Download Excel</ion-button>
 
 </ion-content>
