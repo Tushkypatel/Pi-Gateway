@@ -49,6 +49,7 @@ export class AppComponent implements OnInit {
 
   load() {
     this.cs.load(users => {
+      this.members = users;
     });
   }
 
