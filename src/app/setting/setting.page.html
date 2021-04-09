@@ -17,9 +17,7 @@
 			<ion-label position="floating">Phone number</ion-label>
 			<ion-input type="text" [(ngModel)]="phone_number"></ion-input>
 		</ion-item>
-
 	</ion-list>
-
 	<div>
 		<ion-button class="ion-padding" expand="block" color="primary" (click)="save()">
 			<ion-icon class="ion-padding" name="save"></ion-icon>Save
@@ -29,4 +27,27 @@
 			<ion-icon class="ion-padding" name="arrow-undo"></ion-icon>Back
 		</ion-button> -->
 	</div>
+
+<ion-list>
+	<ion-item>
+		<ion-label position="floating">New Password</ion-label>
+		<ion-input type="password" [(ngModel)]="new_password"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label position="floating">Confirm New Password</ion-label>
+		<ion-input type="password" [(ngModel)]="confirm_new_password"></ion-input>
+	</ion-item>
+</ion-list>
+
+<div>
+	<ion-button class="ion-padding" expand="block" color="primary" (click)="changepassword()">
+		<ion-icon class="ion-padding" name="save"></ion-icon>Change Password
+	</ion-button>
+	<br>
+	<!-- <ion-button class="ion-padding" expand="block" color="primary" (click)="gotohome()">
+		<ion-icon class="ion-padding" name="arrow-undo"></ion-icon>Back
+	</ion-button> -->
+</div>
+
+
 </ion-content>

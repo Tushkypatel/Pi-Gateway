@@ -24,10 +24,10 @@ export class AppComponent implements OnInit {
     private storage: Storage,
     private router: Router
   ) {
-    this.initializeApp();
+    //this.initializeApp();
   }
 
-  async initializeApp() {
+  async ionViewWillEnter() {
     this.platform.ready().then(() => {
       this.statusBar.styleLightContent();
       this.splashScreen.hide();
@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
   load() {
     this.cs.load(users => {
       this.members = users;
+      console.log(users);
     });
   }
 

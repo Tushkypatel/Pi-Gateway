@@ -17,13 +17,9 @@
   <ion-list>
     <ion-item>
       <ion-label>Start Date</ion-label>
-      <ion-datetime value="1990-02-19" placeholder="Select Date"></ion-datetime>
+      <ion-datetime displayFormat="DD MMM YYYY HH:mm" pickerFormat="DD MMM YYYY HH:mm" placeholder="Select Date" [(ngModel)]="from_date"></ion-datetime>
     </ion-item>
-    <ion-item>
-      <ion-label>Start Time</ion-label>
-      <ion-datetime display-format="HH:mm" picker-format="HH:mm" value="1990-02-19T07:43Z"></ion-datetime>
-    </ion-item>
-  </ion-list>
+   </ion-list>
 
   <br><br>
   <ion-list-header>
@@ -34,14 +30,10 @@
 
   <ion-list>
     <ion-item>
-      <ion-label>Start Date</ion-label>
-      <ion-datetime value="1990-02-19" placeholder="Select Date"></ion-datetime>
+      <ion-label>End Date</ion-label>
+      <ion-datetime displayFormat="DD MMM YYYY HH:mm" pickerFormat="DD MMM YYYY HH:mm" placeholder="Select Date" [(ngModel)]="to_date"></ion-datetime>
     </ion-item>
-    <ion-item>
-      <ion-label>Start Time</ion-label>
-      <ion-datetime display-format="HH:mm" picker-format="HH:mm" value="1990-02-19T07:43Z"></ion-datetime>
-    </ion-item>
-  </ion-list>
+   </ion-list>
 
   <ion-button class="ion-padding" expand="block" color="primary" (click)="downloadExcel()">
     <ion-icon class="ion-padding" name="reader"></ion-icon>

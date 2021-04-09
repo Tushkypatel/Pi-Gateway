@@ -49,7 +49,7 @@ export class RegisterPage implements OnInit {
       this.postProvider.postData(body, 'file_aski.php').subscribe((data) => {
         if (data.success) {
           this.router.navigate(['/login']);
-          this.cs.showToast('Registration Successfull');
+          this.cs.showToast('Registration Successful');
         } else {
           this.cs.showToast(data.msg);
         }

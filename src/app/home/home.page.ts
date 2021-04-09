@@ -25,24 +25,34 @@ export class HomePage {
     private cs: CommonService
   ) {
     this.loadUserData();
-  }
+    }
 
   async loadUserData() {
     this.userdata = await this.cs.userData();
-    this.startRecordFetch();
+    //this.startRecordFetch();
   }
 
-  startRecordFetch() {
+ // startRecordFetch() {
+ //   const no = timer(2000, 1000);
+ //   this.subscribe = no.subscribe(x => this.live());
+ //   this.subscriptionbutton = this.platform.backButton.subscribeWithPriority(9999, () => {
+      // do nothing
+ //   });
+ // }
+
+  ionViewWillEnter() {
     const no = timer(1000, 1000);
     this.subscribe = no.subscribe(x => this.live());
     this.subscriptionbutton = this.platform.backButton.subscribeWithPriority(9999, () => {
       // do nothing
     });
+
   }
 
   ionViewDidLeave() {
     setTimeout(() => { this.subscribe.unsubscribe(); }, 10);
   }
+
 
   live() {
     const body = {

@@ -16,6 +16,8 @@ export class SettingPage implements OnInit {
 	userdata: any;
 	full_name: string;
 	phone_number: string;
+	new_password = '';
+	confirm_new_password = '';
 
 
   constructor(private router: Router,
@@ -48,7 +50,7 @@ let body = {
 			  this.userdata.phone_number = this.phone_number;
 	          this.storage.set('session_storage',this.userdata);
 	          this.router.navigate(['/home']);
-	          this.cs.showToast('Update Successfull');
+	          this.cs.showToast('Update Successful');
 
 	    	});
 }
@@ -56,5 +58,28 @@ let body = {
 gotohome(){
 	this.router.navigate(['/home']);
 }
+
+changepassword() {
+    if (this.new_password === '') {
+      this.cs.showToast('New password required.');
+    } else if (this.new_password !== this.confirm_new_password) {
+      this.cs.showToast('Invalid password.');
+    } else {
+      const body = {
+        user_id: this.userdata.user_id,
+        password: this.new_password,
+        aski: 'changepassword'
+      };
+
+      this.PostProvider.postData(body, 'file_aski.php').subscribe((data) => {
+        if (data.success) {
+          this.router.navigate(['/login']);
+          this.cs.showToast('Change Password Successful');
+        } else {
+          this.cs.showToast(data.msg);
+        }
+      });
+    }
+  }
 
 }

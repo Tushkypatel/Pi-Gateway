@@ -62,7 +62,7 @@ export class MainPage implements OnInit {
     };
     this.postProvider.postData(body, 'file_aski.php').subscribe((data) => {
       if (data.success) {
-        this.cs.showToast(this.controls[index].detail + ' status update successfully');
+        this.cs.showToast(this.controls[index].detail + ' status update successful');
       }
     });
   }
