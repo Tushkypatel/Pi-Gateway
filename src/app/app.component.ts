@@ -5,6 +5,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { CommonService } from './common.service';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+import { MessageService } from 'src/providers/message.service';
 
 @Component({
   selector: 'app-root',
@@ -22,12 +24,20 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private cs: CommonService,
     private storage: Storage,
-    private router: Router
+    private router: Router,
+    private menuCtrl: MenuController,
+    private meessageService: MessageService
   ) {
-    //this.initializeApp();
+    this.meessageService.getMessage()
+    .subscribe(result => {
+      console.log(result);
+      if (result.type === 'login') {
+        this.enableDisableMenu(true);
+      }
+    });
   }
 
-  async ionViewWillEnter() {
+  async ngOnInit() {
     this.platform.ready().then(() => {
       this.statusBar.styleLightContent();
       this.splashScreen.hide();
@@ -36,15 +46,18 @@ export class AppComponent implements OnInit {
 
     this.storage.get('session_storage').then((res) => {
       if (res == null) {
+        this.enableDisableMenu(false);
         this.router.navigate(['/login']);
       } else {
+        this.enableDisableMenu(true);
         this.router.navigate(['/home']);
       }
     });
+    this.load();
   }
 
-  ngOnInit() {
-    this.load();
+  enableDisableMenu(type) {
+    this.menuCtrl.enable(type);
   }
 
   load() {
@@ -55,7 +68,11 @@ export class AppComponent implements OnInit {
   }
 
   async logout() {
-    this.cs.logout();
+    this.cs.logout(res => {
+      if (res) {
+        this.enableDisableMenu(false);
+      }
+    });
   }
 
 }

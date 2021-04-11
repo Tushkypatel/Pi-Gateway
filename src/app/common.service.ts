@@ -45,7 +45,7 @@ export class CommonService {
     return a;
   }
 
-  async logout() {
+  async logout(callback?) {
     const alert = await this.alertController.create({
       header: 'Confirm!',
       message: 'Do you really want to logout ?',
@@ -61,7 +61,10 @@ export class CommonService {
           handler: () => {
             this.storage.clear();
             this.router.navigate(['/login']);
-            this.showToast('Logout Successful');
+            this.showToast('You have successfully logged out!');
+            if (callback) {
+              callback(true);
+            }
           }
         }
       ]
@@ -71,9 +74,11 @@ export class CommonService {
 
   async load(callback) {
     const body = await this.userData();
-    body.aski = 'profile';
-    this.postProvider.postData(body, 'file_aski.php').subscribe((data) => {
-      callback(data.profiles);
-    });
+    if (body) {
+      body.aski = 'profile';
+      this.postProvider.postData(body, 'file_aski.php').subscribe((data) => {
+        callback(data.profiles);
+      });
+    }
   }
 }

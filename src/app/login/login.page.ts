@@ -4,6 +4,7 @@ import { PostProvider } from '../../providers/post-provider';
 import { Storage } from '@ionic/storage';
 import { CommonService } from '../common.service';
 import { AlertController } from '@ionic/angular';
+import { MessageService } from 'src/providers/message.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginPage implements OnInit {
     private postProvider: PostProvider,
     private storage: Storage,
     private cs: CommonService,
-    public alertCont: AlertController
+    public alertCont: AlertController,
+    public messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -41,9 +43,10 @@ export class LoginPage implements OnInit {
             this.cs.hideLoader();
             this.storage.set('session_storage', data.result);
             this.router.navigate(['/home']);
-            this.cs.showToast('Login Successful');
+            this.cs.showToast('You are successfully logged in!');
             this.username = '';
             this.password = '';
+            this.messageService.sendMessage({type: 'login'});
           } else {
             this.cs.hideLoader();
             if (data.msg != null) {
