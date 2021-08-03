@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
       console.log(result);
       if (result.type === 'login') {
         this.enableDisableMenu(true);
+        this.load();
       }
     });
   }
